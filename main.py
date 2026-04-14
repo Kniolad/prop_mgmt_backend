@@ -3,7 +3,7 @@ from google.cloud import bigquery
 
 app = FastAPI()
 
-PROJECT_ID = "project-60bb846c-5d83-4add-be0"
+PROJECT_ID = "property-mgmt-backend"
 DATASET = "property_mgmt"
 
 
@@ -51,5 +51,4 @@ def get_properties(bq: bigquery.Client = Depends(get_bq_client)):
             detail=f"Database query failed: {str(e)}"
         )
 
-    properties = [dict(row) for row in results]
-    return properties
+    return [dict(row) for row in results]
